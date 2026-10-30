@@ -1,0 +1,487 @@
+\documentclass[aps,prd,reprint,superscriptaddress,nofootinbib,floatfix]{revtex4-2}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newcommand{\MP}{M_{\rm P}}
+\newcommand{\Mpc}{\,\mathrm{Mpc}}
+\newcommand{\eV}{\,\mathrm{eV}}
+\newcommand{\um}{\,\mu\mathrm{m}}
+\newcommand{\geff}{G_{\rm eff}}
+
+\begin{document}
+
+\title{No Late-Time Step in Newton's Constant from Extra Dimensions,\\
+and the Screening Requirements of the Scale-Invariant Loophole}
+
+\author{Joseph Snodgrass}
+\email{zeroknot@proton.me}
+\affiliation{Independent Researcher, Los Angeles, California, USA}
+
+\date{\today}
+
+\begin{abstract}
+A sharp, spatially uniform increase of the effective gravitational constant by $\sim\!4\%$ at redshift $z\simeq0.01$ (the ``$G$ step'') has been proposed to resolve the Hubble tension, but no microphysical mechanism for it is known. We show that extra-dimensional compactifications cannot supply one. If $G$ is controlled by a stabilized modulus, the transition between vacua shifts the four-dimensional vacuum energy by $|\Delta V| \simeq (c_K/k)\,\varepsilon\, m_\sigma^2 \MP^2$, where $\varepsilon=\Delta G/G$, $m_\sigma$ is the modulus mass and $c_K/k=\mathcal{O}(1)$. Fifth-force tests force $m_\sigma \gtrsim (50\um)^{-1}$, so $|\Delta V| \gtrsim 10^{58}\rho_\Lambda$. In an explicit six-dimensional Einstein--Maxwell flux compactification the coefficient is exactly $1/3$ at leading order in $1/n$. The bubble wall separating the two phases exceeds the Zel'dovich--Kobzarev--Okun bound by 31 orders of magnitude, and moving the Planck mass through a brane-induced term instead requires a quartic coupling below $10^{-117}$. The only escape is a modulus that is light, as in a classically scale-invariant bulk. We show that in six-dimensional gauged chiral supergravity this fixes, with no free parameter, a Brans--Dicke scalar with $\omega=1/2$, i.e.\ a fifth force of strength $\alpha=1/4$ relative to gravity. Such a force lies within the range that screened-fifth-force analyses of the distance ladder find useful, but unscreened it violates the Cassini bound by four orders of magnitude, so the loophole converts the $G$ step into an environmental-screening problem. We formalize what any screening mechanism (which we call a \emph{dilaton brake coupling}) must achieve. These requirements are Solar-System suppression $\le 4.6\times10^{-5}$, a switch-off across less than a decade of environmental potential with steepness $p\gtrsim5$, an unscreened calibrator fraction $0.67\lesssim f_u\lesssim0.78$, and either a range below $\sim\!0.3\Mpc$ or a selective screening of diffuse gas. Neither axio-chameleon nor chameleon screening meets these requirements. The allowed window brings $H_0$ to $\simeq 69\text{--}70\,\mathrm{km\,s^{-1}Mpc^{-1}}$, not to the Planck value, so the scale-invariant loophole can at most ease the Hubble tension.
+\end{abstract}
+
+\maketitle
+
+%=====================================================================
+\section{Introduction}
+%=====================================================================
+
+The local distance-ladder determination of the Hubble constant, $H_0 = 73.04\pm1.04\,\mathrm{km\,s^{-1}Mpc^{-1}}$~\cite{Riess2022}, disagrees with the value inferred from the cosmic microwave background in $\Lambda$CDM, $H_0=67.4\pm0.5$~\cite{Planck2018}, at the $\sim\!5\sigma$ level. Among the proposed resolutions that act only on the local ladder, two are closely related. In the \emph{$G$-step} model of Marra and Perivolaropoulos~\cite{MarraPerivolaropoulos2021}, the effective gravitational constant changes abruptly, $\Delta G/G \simeq 4\%$, at $z_t\simeq0.01$, so that Type~Ia supernovae in the Hubble flow and their Cepheid-calibrated hosts experience different gravity. This model remains phenomenologically debated~\cite{PerivolaropoulosRuchika2025,EfstratiouPerivolaropoulos2025}, but its mechanism is explicitly unknown. In the \emph{screened fifth force} scenario of Desmond, Jain and Sakstein (DJS)~\cite{DJS2019}, $G$ does not change in time. Instead, Cepheids in unscreened, low-density hosts feel an additional scalar force that biases their periods relative to those in the screened anchor galaxies.
+
+Extra dimensions are a natural place to look for a mechanism, since the four-dimensional Planck mass is set by the compactification volume, and Kaluza--Klein (KK) theories are routinely listed among candidate origins of a $G$ step. This paper makes two contributions.
+\begin{enumerate}
+\item \textbf{A no-go result} (Sec.~\ref{sec:nogo}). If the $G$ step is produced by a transition between stabilized compactification vacua, whether through a flux jump, a brane-tension change or a volume transition, the four-dimensional vacuum energy shifts by $\gtrsim10^{58}\rho_\Lambda$. We prove this in general (Proposition~\ref{prop:nogo}) and verify it exactly in six-dimensional Einstein--Maxwell theory. Two possible escapes, the bubble wall and a brane-induced Planck mass, fail independently.
+\item \textbf{The scale-invariant loophole and its screening requirements} (Secs.~\ref{sec:loophole}--\ref{sec:brake}). The only escape is a light modulus. In a classically scale-invariant six-dimensional bulk, geometry fixes the resulting fifth-force strength to $\alpha=1/4$. We compute its effect on the distance ladder and then derive, without assuming a specific mechanism, the quantitative conditions any environmental screening (``dilaton brake coupling'') must satisfy.
+\end{enumerate}
+We do not claim that the Hubble tension is resolved. The conclusion is sharper: extra dimensions cannot produce a $G$ step, and the one extra-dimensional route to a local-$G$ explanation requires a screening mechanism with properties no known mechanism has. A short section on gravitational-wave propagation (Sec.~\ref{sec:gw}) and an appendix on normal-bundle (``twist'') fields (Appendix~\ref{app:twist}) record related results that do not affect the main argument.
+
+Throughout, $\MP = (8\pi G)^{-1/2} = 2.435\times10^{18}\,\mathrm{GeV}$, $\hbar=c=1$, and $\rho_\Lambda \simeq 2.5\times10^{-11}\eV^4$.
+
+%=====================================================================
+\section{Setup}\label{sec:setup}
+%=====================================================================
+
+We work in six dimensions with two compact transverse directions, the minimal setting for codimension-two branes and the one in which the relevant moduli dynamics is best understood~\cite{CarrollGuica2003,Navarro2003,GarrigaPorrati2004,ABPQ2004,GGP2004}. The bulk action contains the Einstein--Hilbert term, a cosmological constant $\Lambda_6$, and a $U(1)$ gauge field with $n$ units of magnetic flux through the transverse space:
+\begin{equation}
+S_6 = \int\! d^6X\sqrt{-G}\left[\tfrac{M_6^4}{2}\left(R_6 - 2\Lambda_6\right) - \tfrac14 F_{MN}F^{MN}\right] + S_{\rm br}.
+\end{equation}
+The flux-stabilized solution is a ``rugby ball'': a sphere of radius $\rho$ with conical deficits at the poles set by brane tensions, parametrized by $\lambda\le1$, with metric
+\begin{equation}
+ds^2 = g_{\mu\nu}dx^\mu dx^\nu + \rho^2\left(d\theta^2 + \lambda^2\sin^2\theta\, d\varphi^2\right).
+\end{equation}
+Matter is confined to a codimension-two brane at a pole and couples to the induced metric. The four-dimensional Planck mass receives a bulk contribution from the transverse area $A = 4\pi\lambda\rho^2$ and, if present, a brane-induced contribution $F$:
+\begin{equation}
+\MP^2 = M_6^4\, A + F. \label{eq:MP}
+\end{equation}
+A fractional change $\varepsilon \equiv \Delta G/G$ felt by brane matter therefore requires either $\Delta A/A \simeq -\varepsilon$ (Sec.~\ref{sec:nogo}) or $\Delta F \simeq -\varepsilon\MP^2$ (Sec.~\ref{sec:induced}). Sub-millimeter tests of the inverse-square law require $\rho\lesssim 50\um$~\cite{Kapner2007,Lee2020}, and supernova SN1987A cooling requires $\rho\lesssim1.2\um$ for two extra dimensions of this shape~\cite{HannestadRaffelt2003} (converted from the torus bound $R<0.66\um$ at equal volume).
+
+%=====================================================================
+\section{No-go theorem for an extra-dimensional $G$ step}\label{sec:nogo}
+%=====================================================================
+
+\subsection{Statement}
+
+Let $x\equiv\rho^{-2}$ and let the four-dimensional Einstein-frame potential of the volume modulus be a sum of terms generated by the bulk cosmological constant, curvature, flux and brane tensions,
+\begin{equation}
+V(x;\bm p) = \sum_j c_j(\bm p)\, x^{k_j}, \label{eq:Vgen}
+\end{equation}
+where the microscopic parameters $\bm p$ (flux quanta, tensions, $\Lambda_6$) enter through the coefficients $c_j$. Brane matter sees $G \propto x$ at fixed $M_6$, so $\varepsilon = \Delta x/x_0$.
+
+\begin{proposition}[No $G$ step from stabilized compactifications]\label{prop:nogo}
+Assume that (i) the volume modulus is stabilized at $x_0$ with $V(x_0)\simeq0$ (to within $\rho_\Lambda$) before the transition, (ii) the transition changes a parameter that multiplies a single term $x^{k}$ in Eq.~\eqref{eq:Vgen}, and (iii) no second, independent parameter changes simultaneously in a correlated way. Then the new vacuum has $G$ shifted by $\varepsilon$ and vacuum energy
+\begin{equation}
+\begin{split}
+\Delta V_{\min} &= -\frac{\varepsilon}{k}\, x_0^2\, \frac{\partial^2V}{\partial x^2}\bigg|_{x_0} + \mathcal{O}(\varepsilon^2)\\
+&= -\frac{c_K}{k}\,\varepsilon\, m_\sigma^2\MP^2 + \mathcal{O}(\varepsilon^2),
+\end{split} \label{eq:dV}
+\end{equation}
+where $m_\sigma$ is the mass of the canonically normalized modulus and $c_K=\mathcal{O}(1)$ is fixed by its kinetic term.
+\end{proposition}
+
+\begin{proof}
+Let the parameter $c$ multiply $x^k$, so that
+\begin{equation*}
+\frac{\partial V}{\partial c}=x^k,\qquad \frac{\partial^2 V}{\partial x\,\partial c}=k\,x^{k-1}.
+\end{equation*}
+The minimum $x_0(c)$ is defined by $\partial V/\partial x=0$. Differentiating this condition with respect to $c$,
+\begin{equation*}
+\frac{\partial^2V}{\partial x^2}\,\frac{dx_0}{dc}+\frac{\partial^2V}{\partial x\,\partial c}=0
+\;\;\Longrightarrow\;\;
+\frac{dx_0}{dc}=-\frac{k\,x_0^{k-1}}{\partial^2V/\partial x^2}.
+\end{equation*}
+The value at the minimum, $V_{\min}(c)=V(x_0(c),c)$, changes by
+\begin{equation*}
+\frac{dV_{\min}}{dc}=\underbrace{\frac{\partial V}{\partial x}}_{=\,0}\frac{dx_0}{dc}+\frac{\partial V}{\partial c}=x_0^k
+\end{equation*}
+(the envelope theorem). For a small change $\delta c$, $\varepsilon=\delta x_0/x_0=-k\,x_0^{k-2}\,\delta c\big/(\partial^2V/\partial x^2)$ and $\Delta V_{\min}=x_0^k\,\delta c$. Eliminating $\delta c$ gives the first line of Eq.~\eqref{eq:dV}. For the second line, the canonical modulus $\psi$ satisfies $x=x_*e^{-\psi/(b\MP)}$ with $b=\mathcal{O}(1)$, so $dx/d\psi=-x/(b\MP)$ and, by the chain rule,
+\begin{equation*}
+m_\sigma^2=\frac{d^2V}{d\psi^2}\bigg|_{x_0}=\left(\frac{dx}{d\psi}\right)^{\!2}\frac{\partial^2V}{\partial x^2}+\frac{d^2x}{d\psi^2}\underbrace{\frac{\partial V}{\partial x}}_{=\,0}
+=\frac{x_0^2}{b^2\MP^2}\,\frac{\partial^2V}{\partial x^2},
+\end{equation*}
+which gives the second line with $c_K=b^2$.
+\end{proof}
+
+The proposition says the vacuum energy shift is \emph{first order} in $\varepsilon$. The cancellation that makes $V(x_0)$ vanish is a cancellation between terms each of order $m_\sigma^2\MP^2$, and changing one of them by the fraction needed to move $G$ by $\varepsilon$ unbalances the sum by the same fraction.
+
+\subsection{Size of the effect}
+
+A modulus that controls $G$ couples to brane matter with gravitational strength, so it is itself a Yukawa force of strength $\mathcal{O}(1)$. Torsion-balance tests then require its range to be below $\sim\!50\um$~\cite{Kapner2007,Lee2020}, i.e.\ $m_\sigma \gtrsim 4\times10^{-3}\eV$. In a flux-stabilized rugby ball, $m_\sigma\sim\rho^{-1}$ and the same bound follows from $\rho\lesssim50\um$. Equation~\eqref{eq:dV} then gives
+\begin{equation}
+\frac{|\Delta V|}{\rho_\Lambda} \gtrsim 5\times10^{58}\,\frac{3\,c_K}{k}\left(\frac{\varepsilon}{0.04}\right)\left(\frac{m_\sigma}{4\,\mathrm{meV}}\right)^{2}. \label{eq:bound}
+\end{equation}
+Table~\ref{tab:dV} evaluates the estimate $|\Delta V|\sim\varepsilon\MP^2/\rho^2$ (with $c_K/k$ set to unity) for representative radii. Even at the largest radius allowed by laboratory tests, the shift exceeds the observed dark energy density by 59 orders of magnitude. At the SN1987A-allowed $\rho\simeq1.2\um$ it exceeds it by 62. Demanding $|\Delta V|\le\rho_\Lambda$ instead would require $\rho\gtrsim\sqrt{\varepsilon\MP^2/\rho_\Lambda}\approx 4\text{--}6\times10^2\Mpc$, extra dimensions larger than the bubble whose interior is supposed to have different $G$.
+
+\begin{table}[t]
+\caption{Vacuum-energy shift $|\Delta V|\simeq\varepsilon\MP^2/\rho^2$ for a $G$ step of $\varepsilon=0.04$, in units of the observed dark-energy density. The exact Einstein--Maxwell coefficient (Sec.~\ref{sec:EM}) multiplies these by $1/3$.}
+\label{tab:dV}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+$\rho$ & $|\Delta V|/\rho_\Lambda$ & Status of $\rho$ \\
+\hline
+$50\um$ & $1.5\times10^{59}$ & sub-mm gravity edge \\
+$30\um$ & $4.1\times10^{59}$ & allowed by sub-mm tests \\
+$1.2\um$ & $2.5\times10^{62}$ & SN1987A edge \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{Explicit check: 6D Einstein--Maxwell}\label{sec:EM}
+
+In 6D Einstein--Maxwell theory on a sphere with $n$ flux quanta, the four-dimensional Einstein-frame potential takes the form (units $M_6=1$; the gauge coupling and $\mathcal{O}(1)$ normalizations are absorbed into $x$ and $\Lambda_6$)~\cite{CarrollGuica2003,BrownDahlen2010}
+\begin{equation}
+V(x) = \frac{\MP^4}{4\pi}\left(-x^2 + \Lambda_6\,x + n^2x^3\right). \label{eq:VEM}
+\end{equation}
+The three terms are the internal curvature, the bulk cosmological constant and the flux energy. Tuning $\Lambda_6 = 1/(4n_0^2)$ makes sector $n_0$ a Minkowski minimum at $x_0=1/(2n_0^2)$. Stepping to $n_0\pm1$ at fixed $\Lambda_6$ (Appendix~\ref{app:EM}) gives, to leading order in $1/n_0$,
+\begin{equation}
+\varepsilon = \mp\frac{3}{n_0}, \qquad \frac{\Delta V}{\MP^2/\rho_0^2} = \pm\frac{1}{n_0} = -\frac{\varepsilon}{3}, \label{eq:EMresult}
+\end{equation}
+which is Eq.~\eqref{eq:dV} with $k=3$. Table~\ref{tab:EM} shows the exact minima. A $4\%$ step requires $n_0\approx75$, and the vacuum-energy jump is one third of the estimate in Table~\ref{tab:dV}.
+
+\begin{table}[t]
+\caption{Exact flux-sector transitions in the 6D Einstein--Maxwell model, Eq.~\eqref{eq:VEM}, with $\Lambda_6$ tuned so sector $n_0$ is Minkowski. The ratio $|\Delta V|/(\varepsilon\MP^2/\rho_0^2)$ approaches $1/3$ as $n_0\to\infty$.}
+\label{tab:EM}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$n_0$ & new $n$ & $\varepsilon=\Delta G/G$ & $\Delta V/(\MP^2/\rho_0^2)$ & ratio \\
+\hline
+25 & 24 & $+0.125$ & $-0.047$ & 0.38\\
+50 & 49 & $+0.061$ & $-0.022$ & 0.35\\
+75 & 74 & $+0.041$ & $-0.014$ & 0.35\\
+100 & 99 & $+0.030$ & $-0.010$ & 0.34\\
+100 & 101 & $-0.030$ & $+0.0096$ & 0.32\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\subsection{The bubble wall}
+
+A spatially localized $G$ step (a region of radius $R\sim 50\Mpc$ around us) is bounded by a domain wall in the volume modulus. With field excursion $\Delta\psi\sim\varepsilon\MP$ and mass $m_\sigma\sim\rho^{-1}$, the wall tension is
+\begin{equation}
+\sigma_w \sim m_\sigma(\Delta\psi)^2 \sim \varepsilon^2\frac{\MP^2}{\rho} \approx 6\times10^{49}\eV^3 \quad(\rho=30\um),
+\end{equation}
+and its gravitational potential is $\Phi_w\sim\sigma_wR/\MP^2\sim10^{25}$ at $R=50\Mpc$. The Zel'dovich--Kobzarev--Okun bound on cosmological domain walls, $\sigma_w\lesssim(1\,\mathrm{MeV})^3$~\cite{ZKO1974}, is violated by 31 orders of magnitude. A uniform global step avoids the wall but not Eq.~\eqref{eq:dV}.
+
+\subsection{The brane-induced Planck mass}\label{sec:induced}
+
+Alternatively, $G$ could change through the brane-induced term in Eq.~\eqref{eq:MP}, $F=\xi|\Phi|^2$ for a brane scalar with quartic self-coupling $\lambda_\Phi$. Shifting $F$ by $\varepsilon\MP^2$ moves $|\Phi|^2$ by $\varepsilon\MP^2/\xi$ and costs brane vacuum energy $\sim\lambda_\Phi(\varepsilon\MP^2/\xi)^2$. Requiring this to be below $\rho_\Lambda$ gives
+\begin{equation}
+\frac{\lambda_\Phi}{\xi^2}\lesssim\frac{\rho_\Lambda}{\varepsilon^2\MP^4}\approx 5\times10^{-118},
+\end{equation}
+a second cosmological-constant problem. Energy that is not cancelled in the bulk reappears as four-dimensional curvature.
+
+\subsection{Scope and the escape clause}
+
+Proposition~\ref{prop:nogo} covers flux jumps, tension changes and volume transitions between stabilized vacua, including the football-shaped compactifications of Refs.~\cite{CarrollGuica2003,Navarro2003}. Garriga and Porrati showed that such compactifications do not self-tune~\cite{GarrigaPorrati2004}, and Brown and Dahlen analyzed flux-changing transitions in the same landscape~\cite{BrownDahlen2010}. To our knowledge the consequence for a late-time $G$ step has not been stated. It evades only three loopholes:
+\begin{enumerate}
+\item \emph{Correlated tuning:} two independent parameters (say flux and tension) jump together so that $\sum_j x_0^{k_j}\delta c_j=0$. This requires a coincidence at the level of $\rho_\Lambda/(\varepsilon m_\sigma^2\MP^2)\lesssim10^{-58}$, with flux quantized.
+\item \emph{$\mathcal{O}(1)$ prefactors:} these cannot close a gap of 58 orders of magnitude.
+\item \emph{A light modulus:} if $m_\sigma$ is not bounded below because the bulk has a flat direction, Eq.~\eqref{eq:bound} no longer applies. But then the modulus mediates a long-range, gravitational-strength fifth force, and $G$ felt by matter depends on environment. A homogeneous step cannot occur: a field with $m_\sigma\gg H_0$ tracks the slowly varying mean density, and one with $m_\sigma\lesssim H_0$ evolves on a Hubble time, not within $\Delta z\ll0.01$. This is the subject of Secs.~\ref{sec:loophole}--\ref{sec:brake}.
+\end{enumerate}
+Proposition~\ref{prop:nogo} is therefore a dichotomy. A heavy modulus gives a vacuum-energy catastrophe. A light modulus turns the $G$ step into a screened-fifth-force problem.
+
+%=====================================================================
+\section{The scale-invariant loophole: $\alpha=1/4$ from geometry}\label{sec:loophole}
+%=====================================================================
+
+Six-dimensional gauged chiral (Salam--Sezgin) supergravity~\cite{SalamSezgin1984}, the basis of the supersymmetric large-extra-dimensions (SLED) program~\cite{ABPQ2004,ABRS2001}, has a classical scaling symmetry $g_{MN}\to\zeta g_{MN}$, $e^{\phi}\to\zeta^{-1}e^{\phi}$. A change of brane tension can then be absorbed by sliding along the flat direction $e^{\phi}\rho^2=\text{const}$ while the brane stays flat. This is precisely the light-modulus escape.
+
+Write the 6D metric as $g_{\mu\nu}(x)dx^\mu dx^\nu + e^{2\sigma(x)}\rho_0^2\,d\Omega_2^2$ and restrict to the flat direction, $\phi=-2\sigma+\text{const}$. With $\Phi\equiv e^{2\sigma}$, the four-dimensional action in the frame brane matter sees (the induced metric) is of Brans--Dicke form,
+\begin{align}
+S &= \frac{M_0^2}{2}\int d^4x\sqrt{-g}\left[\Phi R - \frac{\omega}{\Phi}(\partial\Phi)^2\right], \nonumber\\
+\omega &= \underbrace{-\tfrac{d-1}{d}}_{\text{volume},\,d=2}+\underbrace{1}_{\text{dilaton}} = \tfrac12 . \label{eq:omega}
+\end{align}
+The volume contribution is the standard KK result ($\omega=0$ for one extra dimension, $-1/2$ for two). The dilaton contributes $+1$ because its 6D kinetic term is normalized like the curvature term and $(\partial\phi)^2=(\partial\Phi)^2/\Phi^2$. Since brane matter couples only to the induced metric, the fifth-force strength relative to gravity, the scalar--matter coupling and the post-Newtonian parameter follow directly:
+\begin{gather}
+\alpha \equiv \frac{F_{\rm scalar}}{F_{\rm grav}}=\frac{1}{2\omega+3}=\frac14, \label{eq:alpha}\\
+\beta=\sqrt{\alpha/2}\simeq0.35,\qquad
+\gamma_{\rm PPN}=\frac{1+\omega}{2+\omega}=0.6 . \nonumber
+\end{gather}
+The strength is fixed by the codimension and the scaling symmetry. It is not a fitted parameter.
+
+\paragraph*{Range.} Loops lift the flat direction and give the modulus a mass $m\sim1/(\rho^2\MP)$~\cite{ABRS2001}. Table~\ref{tab:range} lists the resulting range together with the 6D scale $M_6$ implied by Eq.~\eqref{eq:MP}.
+
+\begin{table}[t]
+\caption{Dilaton range $1/m$ with $m\sim1/(\rho^2\MP)$ (uncertain by an $\mathcal{O}(1)$ factor) and the 6D Planck scale implied by Eq.~\eqref{eq:MP} with $\lambda=1$.}
+\label{tab:range}
+\begin{ruledtabular}
+\begin{tabular}{lccl}
+$\rho$ & range & $M_6$ & status \\
+\hline
+$10\um$ & $40\Mpc$ & 3.7 TeV & excluded (SN1987A, morphology)\\
+$4.5\um$ & $8\Mpc$ & 5.5 TeV & excluded (SN1987A, morphology)\\
+$1.2\um$ & $0.6\Mpc$ & 11 TeV & SN1987A edge\\
+$0.87\um$ & $0.3\Mpc$ & 13 TeV & below morphology band\\
+$0.09\um$ & $3\,\mathrm{kpc}$ & 39 TeV & neutron-star-heating edge\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\paragraph*{Unscreened, it is excluded.} Equation~\eqref{eq:alpha} gives $|\gamma_{\rm PPN}-1| = 0.4$, while Cassini requires $|\gamma_{\rm PPN}-1|<2.3\times10^{-5}$~\cite{Cassini2003}. Since $\gamma-1=-2\alpha_{\rm eff}/(1+\alpha_{\rm eff})$, the effective coupling of the Sun must be suppressed by
+\begin{equation}
+\frac{\alpha_{\rm eff,\odot}}{\alpha}\le 4.6\times10^{-5}. \label{eq:cassini}
+\end{equation}
+Old neutron-star heating gives $\rho\lesssim0.09\um$~\cite{HannestadRaffelt2003} unless KK gravitons decay mostly into the bulk. Either way, the range remains far larger than a stellar radius, which is all the Cepheid effect below requires.
+
+\paragraph*{Caveats.} The value $\omega=1/2$ is classical. Brane couplings such as a dilaton-dependent tension $T(\phi)$, localized flux~\cite{BDW2015}, warping near the conical poles and loop corrections can shift it. A first-principles derivation of $\beta$ from the brane action is left to future work.
+
+%=====================================================================
+\section{Effect on the distance ladder}\label{sec:ladder}
+%=====================================================================
+
+Following DJS~\cite{DJS2019}, suppose Cepheid envelopes in a fraction $f_u$ of supernova host galaxies feel the full $\alpha=1/4$ force, while the anchor Cepheids (Milky Way, NGC~4258) are screened. A stronger effective $G$ shortens the pulsation period, $P\propto(G\bar\rho)^{-1/2}\propto(1+\alpha)^{-1/2}$. With the near-infrared Wesenheit period--luminosity slope $\log L\simeq1.3\log P$, each unscreened Cepheid's distance is underestimated by
+\begin{gather}
+\Delta\log_{10}d = -0.325\log_{10}(1+\alpha), \nonumber\\
+\frac{\Delta d}{d}=-7.0\%,\qquad\Delta\mu=0.157\,\mathrm{mag}. \label{eq:ceph}
+\end{gather}
+Underestimated calibrator distances make the supernovae appear too faint, so $H_0$ is biased high. To linear order the corrected value is $H_0 = 73.04\,(1-0.070 f_u)$. We neglect the smaller change in luminosity at fixed period, which DJS include.
+
+The fifth force also acts on the tip of the red giant branch (TRGB), but we conservatively take TRGB distances to be unaffected. JWST finds Cepheid and TRGB distance moduli to the same hosts in agreement, $\Delta\mu_{\rm C-T}=0.01\pm0.04\,(\mathrm{stat})\pm0.04\,(\mathrm{sys})$~\cite{Riess2024}, while the fifth force predicts $\Delta\mu_{\rm C-T}=0.157f_u$. Table~\ref{tab:ladder} shows the trade-off. If TRGB luminosities are also shifted~\cite{DesmondSakstein2020}, part of the Cepheid--TRGB offset cancels, but the TRGB-calibrated $H_0$ is lowered too.
+
+\begin{table}[t]
+\caption{Linearized effect of an $\alpha=1/4$ force on a fraction $f_u$ of unscreened calibrator Cepheids, starting from $H_0=73.04\pm1.04$. ``Planck'' is the tension with $67.4\pm0.5$; ``C--T'' is the tension with the JWST Cepheid--TRGB agreement, assuming TRGB is unaffected.}
+\label{tab:ladder}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$f_u$ & $H_0$ & Planck & $\Delta\mu_{\rm C-T}$ (mag) & C--T \\
+\hline
+0.25 & 71.8 & $3.8\sigma$ & 0.04 & $0.5\sigma$\\
+0.50 & 70.5 & $2.8\sigma$ & 0.08 & $1.2\sigma$\\
+0.75 & 69.2 & $1.6\sigma$ & 0.12 & $1.9\sigma$\\
+1.00 & 67.9 & $0.5\sigma$ & 0.16 & $2.6\sigma$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Requiring both tensions to be below $2\sigma$ selects a narrow window,
+\begin{equation}
+0.67\lesssim f_u\lesssim0.78,\qquad H_0\simeq 69\text{--}70\,\mathrm{km\,s^{-1}Mpc^{-1}}. \label{eq:window}
+\end{equation}
+The full DJS analysis with realistic screening maps finds that many models reduce the tension below $3\sigma$, but reduction below $2\sigma$ is unlikely~\cite{DJS2019}. Our linear estimate should be read in that light. It shows that the geometrically fixed $\alpha=1/4$ has the right order of magnitude, not that the tension is resolved.
+
+%=====================================================================
+\section{Requirements on a dilaton brake coupling}\label{sec:brake}
+%=====================================================================
+
+Section~\ref{sec:loophole} fixes the strength of the force, and Sec.~\ref{sec:ladder} shows what it would do if suitably screened. Whether a screening mechanism exists is a separate question. Rather than posit one, we define the class of mechanisms required and derive its constraints.
+
+\begin{definition}
+A \emph{dilaton brake coupling} is an environment-dependent suppression of the scalar charge of a body $i$,
+\begin{equation}
+\beta_{\rm eff}^{(i)} = \beta\,\mathcal{B}_i,\qquad 0\le\mathcal{B}_i\le1,
+\end{equation}
+so that the force between two bodies has strength $\alpha\,\mathcal{B}_i\mathcal{B}_j$ (and $\alpha\,\mathcal{B}_i$ in one-sided tests such as light deflection),
+where $\mathcal{B}_i$ may depend on the body's own potential $\Phi_{\rm self}$, its environmental potential $\Phi_{\rm env}$ and its local density, and must reduce to $\mathcal{B}=1$ in the unscreened limit so that the geometric prediction $\alpha=1/4$ is preserved.
+\end{definition}
+
+The data impose the following requirements.
+
+\paragraph*{R1 (Solar System).} By Eq.~\eqref{eq:cassini}, $\mathcal{B}_\odot\lesssim4.6\times10^{-5}$ for the one-sided light-deflection and time-delay test.
+
+\paragraph*{R2 (Anchors screened).} Cepheids in the Milky Way and NGC~4258 must have $\mathcal{B}\ll1$. Otherwise the anchor and host biases cancel.
+
+\paragraph*{R3 (Hosts unscreened).} Envelopes of Cepheids in a fraction $f_u$ of supernova hosts must have $\mathcal{B}\simeq1$, with $f_u$ in the window of Eq.~\eqref{eq:window}.
+
+\paragraph*{R4 (Self-screening cannot do it).} The Sun's surface potential ($2\times10^{-6}$) is only ten times a Cepheid's ($\sim2\times10^{-7}$ for $R\approx50R_\odot$). A brake depending on $\Phi_{\rm self}$ alone cannot reach $\mathcal{B}_\odot<5\times10^{-5}$ while keeping $\mathcal{B}_{\rm Ceph}\simeq1$ unless it switches more steeply than any thin-shell mechanism. The suppression must instead come from the environment.
+
+\paragraph*{R5 (Steepness).} Model the environmental dependence as $\mathcal{B}=[1+(\Phi_{\rm env}/\Phi_b)^p]^{-1}$ and let $\kappa\equiv\Phi_{\rm env,MW}/\Phi_{\rm env,host}$. Satisfying R1 ($\mathcal{B}\le4.6\times10^{-5}$ in the Milky Way environment) together with R3 ($\mathcal{B}\ge0.9$ in hosts) requires
+\begin{equation}
+p\ \ge\ \frac{\ln(2.0\times10^{5})}{\ln\kappa}, \label{eq:steep}
+\end{equation}
+i.e.\ $p\ge\{11,\,5.3,\,3.6,\,2.7\}$ for $\kappa=\{3,\,10,\,30,\,100\}$.
+The brake must switch off over at most one to two decades of environmental potential.
+
+\paragraph*{R6 (Galaxy morphology).} Low-density galaxies whose environment leaves Cepheid envelopes unscreened also host diffuse gas. If the gas feels the force while stars partly do not, gas--star offsets and warps result. Morphology limits the force strength to $\alpha\mathcal{B}_{\rm gas}^2\lesssim0.05$ at a range of $1.2\Mpc$, tightening to $3\times10^{-5}$ at $8\Mpc$~\cite{DesmondFerreira2020,Desmond2018}, with sensitivity over roughly $0.3\text{--}8\Mpc$. For $\alpha=1/4$ either
+\begin{itemize}
+\item[(a)] the range is $\lesssim0.3\Mpc$, which requires $\rho\lesssim0.9\um$ (Table~\ref{tab:range}) and is consistent with SN1987A, or
+\item[(b)] the brake screens diffuse gas ($\mathcal{B}_{\rm gas}^2\lesssim0.2$) while leaving stellar envelopes in the same galaxies unscreened, the reverse of the ordering produced by thin-shell mechanisms.
+\end{itemize}
+
+\paragraph*{R7 (Range consistency).} In chameleon (thin-shell) screening a Cepheid envelope is unscreened only if the threshold $\chi_c\gtrsim2\times10^{-7}$. With the Desmond--Ferreira relation $\chi_c\simeq1.5\times10^{-8}(\lambda_C/0.32\Mpc)^2$~\cite{DesmondFerreira2020}, this requires $\lambda_C\gtrsim1.2\Mpc$, above the $\lesssim0.6\Mpc$ allowed by SN1987A (up to the $\mathcal{O}(1)$ uncertainty in the range). A chameleon-type realization therefore conflicts with branch (a) of R6.
+
+\subsection{Known mechanisms}
+
+\paragraph*{Axio-chameleon screening.} This is the native mechanism for the axio-dilaton of string-inspired and SLED-like constructions~\cite{BBQ2023,Smith2025}. Here the dilaton charge of a source of radius $R$ is reduced by the axion gradient in a surface layer of width $\ell$, $\mathfrak g_{\rm eff}=\mathfrak g/[1+\tfrac14(R/\ell)\widehat W_1^2(\mathfrak a_+-\mathfrak a_-)^2]$~\cite{BBQ2023}. It fails R3 and R5 for two reasons. Larger bodies are \emph{more} screened, so a Cepheid ($R\approx50R_\odot$) is screened about 50 times more strongly than the Sun, which R1 already requires to be screened. And screening requires the external axion value to differ from the internal one, so denser surroundings screen \emph{less}, the opposite of R2 and R3.
+
+\paragraph*{Chameleon screening.} This leaves Cepheid envelopes exposed only for $\lambda_C\gtrsim1.2\Mpc$ (R7). There galaxy morphology limits the force to $\alpha\lesssim0.05$, a factor $4$--$5$ below $\alpha=1/4$. A chameleon of strength $0.05$ could pass, but then the coupling is no longer the one the geometry predicts.
+
+\paragraph*{Density-threshold variants.} These unscreen only gas below a critical density. They leave the dense Cepheid core screened, so only the small envelope mass feels the force, far too little to shift periods by percent levels.
+
+\subsection{Summary of the map}
+
+Table~\ref{tab:req} collects the requirements. Branch (a) of R6 is the most economical. A sub-micron rugby ball ($\rho\lesssim0.9\um$, $M_6\gtrsim13\,\mathrm{TeV}$) puts the dilaton range below the morphology band, and what remains is an environmental brake satisfying R1--R5. No known mechanism provides this, but the target is now precise. It is an environment-dependent (not self-potential-dependent) suppression with steepness $p\gtrsim5$ across a factor $\sim\!10$ in environmental potential, acting on a gravitational-strength scalar of range between a stellar radius and $\sim\!0.3\Mpc$.
+
+\begin{table*}[t]
+\caption{Requirements on any dilaton brake coupling acting on the $\alpha=1/4$ scale-invariant-bulk scalar, and the status of known screening mechanisms. A check mark means the requirement can be met; a cross means it fails.}
+\label{tab:req}
+\begin{ruledtabular}
+\begin{tabular}{lllcc}
+ & Requirement & Quantitative target & Axio-chameleon & Chameleon \\
+\hline
+R1 & Solar System screened & $\mathcal{B}_\odot\le4.6\times10^{-5}$ & \checkmark & \checkmark \\
+R2 & Anchors screened & $\mathcal{B}_{\rm MW},\mathcal{B}_{\rm N4258}\ll1$ & $\times$ (dense env.\ screens less) & \checkmark \\
+R3 & Host envelopes unscreened & $\mathcal{B}\simeq1$, $0.67\lesssim f_u\lesssim0.78$ & $\times$ (large $R$ screened) & only if $\lambda_C\gtrsim1.2\Mpc$ \\
+R4 & Environmental, not self, screening & $\Phi_\odot/\Phi_{\rm Ceph}\approx10$ insufficient & $\times$ & \checkmark \\
+R5 & Steep switch & $p\ge\ln(2\times10^5)/\ln\kappa$ & --- & \checkmark (thin shell) \\
+R6 & Morphology & range $\lesssim0.3\Mpc$, or gas screened & --- & $\times$ (factor 4--5) \\
+R7 & Range consistent with SN1987A & $\lambda\lesssim0.6\Mpc$ & --- & $\times$ (needs $\ge1.2\Mpc$) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+%=====================================================================
+\section{Gravitational-wave sector}\label{sec:gw}
+%=====================================================================
+
+The same geometry implies a gravity-side observable. This section is not needed for the results above, and the underlying effect, gravitational waves taking a bulk ``shortcut'', is known~\cite{ChungFreese2000,Visinelli2018,LinYuLiu2023,LinYuGong2024}. Light follows the induced brane metric $g^{\rm light}_{\mu\nu}=\eta_{\mu\nu}+\partial_\mu y^I\partial_\nu y^I$, a disformal metric with the brane-bending modes (branons~\cite{Sundrum1999,DobadoMaroto2001}) as the scalar. The graviton zero mode is uniform over the compact space and follows the background metric up to its brane-localized fraction $f_{\rm loc}=F/\MP^2$. Along a line of sight,
+\begin{equation}
+\frac{\Delta t}{t}\simeq\tfrac12(1-f_{\rm loc})\big\langle\dot y^2+(\partial_\parallel y)^2\big\rangle\ \ge\ 0,
+\end{equation}
+so gravity never trails light. The new element is the $(1-f_{\rm loc})$ suppression by brane-induced gravity, which we have not found in the literature. GW170817~\cite{GW170817} bounds $\Delta t/t\lesssim4\times10^{-16}$. If the displacement mode sits in an unstable flux sector, so that its amplitude is set by $|m^2_{\rm min}(n)|$, the bound requires that mode to be $\gtrsim10^4$ times lighter than the brane-tension scale. Determining the spectrum $m^2_{\rm min}(n)$ is left for future work.
+
+%=====================================================================
+\section{Consistency and limitations}\label{sec:limits}
+%=====================================================================
+
+\paragraph*{What the main results depend on.} Proposition~\ref{prop:nogo} uses only Eq.~\eqref{eq:MP}, the structure~\eqref{eq:Vgen} of the moduli potential and fifth-force bounds. The value $\alpha=1/4$ uses only the classical scale symmetry and minimal coupling to the induced metric. Neither depends on the brane rigidity or brane-induced gravity terms discussed next.
+
+\paragraph*{Ghosts.} Two ingredients of the broader framework carry known ghost risks and are excluded from the main results. (i) An extrinsic-rigidity term $\alpha_r K_IK^I$ contains $(\Box y)^2$ for the branons and generically introduces a higher-derivative mode at mass $\sim\!\sqrt{T/\alpha_r}$, as for the rigid string. It must be treated as an effective-field-theory correction valid below that scale. (ii) Brane-induced gravity with more than one extra dimension has a known ghost in infinite-volume setups~\cite{DubovskyRubakov2003}. Whether compactness of the rugby ball removes it should be checked before relying on $f_{\rm loc}$ (Sec.~\ref{sec:gw}).
+
+\paragraph*{Diffeomorphism invariance.} All constructions here are fully covariant in six dimensions. The extrinsic quantities are contracted over the normal index and are invariant under rotations of the normal frame. No preferred foliation is introduced.
+
+\paragraph*{Open issues.} The $\mathcal{O}(1)$ coefficient $c_K/k$ in Proposition~\ref{prop:nogo} has been computed exactly only for the Einstein--Maxwell sphere; conical defects modify it by $\mathcal{O}(1)$ factors, which cannot affect the conclusion. The value $\omega=1/2$ relies on the classical SLED flat direction, which is subject to the self-tuning critiques of Refs.~\cite{GarrigaPorrati2004,ABPQ2004} and may shift once brane-localized couplings are included; Secs.~\ref{sec:loophole}--\ref{sec:brake} should be read with that caveat.
+
+%=====================================================================
+\section{Conclusions}
+%=====================================================================
+
+A sharp, late-time step in $G$ cannot come from extra dimensions with stabilized moduli. The vacuum energy shifts at first order in $\Delta G/G$, by $\gtrsim10^{58}\rho_\Lambda$, and the alternatives of a localized bubble or a brane-induced Planck mass fail independently. The only escape is a light modulus. In a scale-invariant six-dimensional bulk, that modulus produces a fifth force of fixed strength $\alpha=1/4$, of the right size for screened-fifth-force corrections to the distance ladder. Its viability rests entirely on a screening mechanism. We have specified that mechanism's requirements quantitatively: environmental rather than self-screening, a steep switch ($p\gtrsim5$ per decade of environmental potential), an unscreened calibrator fraction $0.67$--$0.78$, and either sub-$0.3\Mpc$ range or selective gas screening. Even in the allowed window, $H_0$ falls to $\simeq69$--$70$, easing but not removing the tension. Known screening mechanisms fail these requirements. Constructing one that satisfies them, or proving none exists, is the open problem this work leaves.
+
+\begin{acknowledgments}
+This line of inquiry began as a heuristic: while reverse-engineering a zero-knowledge-proof program concept, the author pictured a hidden bulk whose curvature parameters are constrained by what an observer on the brane can verify. The physics presented here does not depend on that analogy. The author used an AI assistant (Claude, Anthropic) for checking calculations, literature searching and editing. All results and any errors are the author's responsibility.
+\end{acknowledgments}
+
+%=====================================================================
+\appendix
+\section{Einstein--Maxwell flux transitions}\label{app:EM}
+%=====================================================================
+
+For Eq.~\eqref{eq:VEM}, write $v(x;n)=-x^2+\Lambda_6x+n^2x^3$, with derivatives
+\begin{equation}
+\frac{\partial v}{\partial x}=-2x+\Lambda_6+3n^2x^2,\qquad \frac{\partial^2 v}{\partial x^2}=-2+6n^2x.
+\end{equation}
+Requiring a Minkowski minimum in sector $n_0$, $v=\partial v/\partial x=0$, gives
+\begin{equation}
+x_0=\frac{1}{2n_0^2},\qquad \Lambda_6=\frac{1}{4n_0^2},\qquad \frac{\partial^2 v}{\partial x^2}\bigg|_{x_0}=1>0 .
+\end{equation}
+For $n\to n_0+\delta n$ at fixed $\Lambda_6$, setting $\partial v/\partial x=0$ gives $3n^2x^2-2x+\Lambda_6=0$, whose minimum ($\partial^2v/\partial x^2>0$) is the larger root,
+\begin{equation}
+x_1=\frac{1+\sqrt{1-3n^2\Lambda_6}}{3n^2}.
+\end{equation}
+To first order, with $\delta(n^2)=2n_0\,\delta n$ and $\partial^2v/\partial x\,\partial(n^2)=3x^2$,
+\begin{align}
+\delta x &= -\frac{\partial^2 v/\partial x\,\partial(n^2)}{\partial^2 v/\partial x^2}\,\delta(n^2) = -6n_0x_0^2\,\delta n,\\
+\varepsilon &=\frac{\delta x}{x_0}=-\frac{3\,\delta n}{n_0},\\
+\delta v_{\min} &= \frac{\partial v}{\partial(n^2)}\bigg|_{x_0}\delta(n^2)=x_0^3\,\delta(n^2)=2n_0x_0^3\,\delta n .
+\end{align}
+With $\MP^2=4\pi\rho_0^2$ ($M_6=1$),
+\begin{equation}
+\frac{\Delta V}{\MP^2/\rho_0^2}=\frac{\delta v_{\min}}{x_0^2}=\frac{\delta n}{n_0}=-\frac{\varepsilon}{3}.
+\end{equation}
+Table~\ref{tab:EM} uses the exact root $x_1$.
+
+%=====================================================================
+\section{The twist field and photon mixing}\label{app:twist}
+%=====================================================================
+
+For completeness we record a null result. At codimension two the rotation of the two brane normals defines the normal-bundle connection $B_\mu=n_2\cdot\nabla_\mu n_1$. Its field strength is fixed by the Ricci equation of the embedding, and at a pole of the rugby ball it coincides (up to an $\mathcal{O}(1)$ factor of $\lambda$) with the KK gauge field $W_\mu$ of the transverse rotation~\cite{Neronov2001}. It is not an independent field. Its gauge coupling is gravitational, $g_W\sim1/(\lambda\rho\MP)$. It mixes with the bulk gauge zero mode through the vortex winding and acquires a mass for $n\neq0$, consistent with the gauge spectra of Ref.~\cite{PRS2007}. Kinetic mixing with the photon can arise only from loops of brane fields carrying both electric charge and transverse spin, $\epsilon\sim e g_W/(16\pi^2)\sim e/(16\pi^2\lambda\rho\MP)$, so $\epsilon\sim10^{-30}$ at $\rho=10\um$. Photon--twist oscillations then violate the distance-duality relation $d_L=(1+z)^2d_A$ at order $\epsilon^2\sim10^{-60}$, unobservable in supernova or BAO data. Light-based distance tests are therefore insensitive to this sector unless some term raises the coupling far above gravitational strength, and no such term appears in the action. The observable signatures of the framework lie on the gravity side.
+
+%=====================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Riess2022} A.~G.~Riess \emph{et al.}, ``A comprehensive measurement of the local value of the Hubble constant with 1 km/s/Mpc uncertainty from the Hubble Space Telescope and the SH0ES team,'' Astrophys.\ J.\ Lett.\ \textbf{934}, L7 (2022), arXiv:2112.04510.
+
+\bibitem{Planck2018} N.~Aghanim \emph{et al.} (Planck Collaboration), ``Planck 2018 results. VI. Cosmological parameters,'' Astron.\ Astrophys.\ \textbf{641}, A6 (2020), arXiv:1807.06209.
+
+\bibitem{MarraPerivolaropoulos2021} V.~Marra and L.~Perivolaropoulos, ``Rapid transition of $G_{\rm eff}$ at $z_t\simeq0.01$ as a possible solution of the Hubble and growth tensions,'' Phys.\ Rev.\ D \textbf{104}, L021303 (2021), arXiv:2102.06012.
+
+\bibitem{PerivolaropoulosRuchika2025} L.~Perivolaropoulos and Ruchika, ``Hubble tension and the G-step model: Re-examination of recent constraints on modified local physics,'' arXiv:2508.04395 (2025).
+
+\bibitem{EfstratiouPerivolaropoulos2025} D.~Efstratiou and L.~Perivolaropoulos, ``Metastable cosmological constant and gravitational bubbles: Ultra-late-time transitions in modified gravity,'' arXiv:2503.11365 (2025).
+
+\bibitem{DJS2019} H.~Desmond, B.~Jain, and J.~Sakstein, ``Local resolution of the Hubble tension: The impact of screened fifth forces on the cosmic distance ladder,'' Phys.\ Rev.\ D \textbf{100}, 043537 (2019), arXiv:1907.03778.
+
+\bibitem{CarrollGuica2003} S.~M.~Carroll and M.~M.~Guica, ``Sidestepping the cosmological constant with football-shaped extra dimensions,'' arXiv:hep-th/0302067 (2003).
+
+\bibitem{Navarro2003} I.~Navarro, ``Codimension two compactifications and the cosmological constant problem,'' JCAP \textbf{09}, 004 (2003), arXiv:hep-th/0302129.
+
+\bibitem{GarrigaPorrati2004} J.~Garriga and M.~Porrati, ``Football shaped extra dimensions and the absence of self-tuning,'' JHEP \textbf{08}, 028 (2004), arXiv:hep-th/0406158.
+
+\bibitem{ABPQ2004} Y.~Aghababaie, C.~P.~Burgess, S.~L.~Parameswaran, and F.~Quevedo, ``Towards a naturally small cosmological constant from branes in 6D supergravity,'' Nucl.\ Phys.\ B \textbf{680}, 389 (2004), arXiv:hep-th/0304256.
+
+\bibitem{GGP2004} G.~W.~Gibbons, R.~G\"uven, and C.~N.~Pope, ``3-branes and uniqueness of the Salam--Sezgin vacuum,'' Phys.\ Lett.\ B \textbf{595}, 498 (2004), arXiv:hep-th/0307238.
+
+\bibitem{Kapner2007} D.~J.~Kapner \emph{et al.}, ``Tests of the gravitational inverse-square law below the dark-energy length scale,'' Phys.\ Rev.\ Lett.\ \textbf{98}, 021101 (2007), arXiv:hep-ph/0611184.
+
+\bibitem{Lee2020} J.~G.~Lee, E.~G.~Adelberger, T.~S.~Cook, S.~M.~Fleischer, and B.~R.~Heckel, ``New test of the gravitational $1/r^2$ law at separations down to 52 $\mu$m,'' Phys.\ Rev.\ Lett.\ \textbf{124}, 101101 (2020), arXiv:2002.11761.
+
+\bibitem{HannestadRaffelt2003} S.~Hannestad and G.~G.~Raffelt, ``Supernova and neutron-star limits on large extra dimensions reexamined,'' Phys.\ Rev.\ D \textbf{67}, 125008 (2003), arXiv:hep-ph/0304029.
+
+\bibitem{BrownDahlen2010} A.~R.~Brown and A.~Dahlen, ``Small steps and giant leaps in the landscape,'' Phys.\ Rev.\ D \textbf{82}, 083519 (2010), arXiv:1004.3994.
+
+\bibitem{ZKO1974} Ya.~B.~Zel'dovich, I.~Yu.~Kobzarev, and L.~B.~Okun, ``Cosmological consequences of a spontaneous breakdown of a discrete symmetry,'' Sov.\ Phys.\ JETP \textbf{40}, 1 (1975).
+
+\bibitem{SalamSezgin1984} A.~Salam and E.~Sezgin, ``Chiral compactification on Minkowski $\times S^2$ of $N=2$ Einstein--Maxwell supergravity in six dimensions,'' Phys.\ Lett.\ B \textbf{147}, 47 (1984).
+
+\bibitem{ABRS2001} A.~Albrecht, C.~P.~Burgess, F.~Ravndal, and C.~Skordis, ``Natural quintessence and large extra dimensions,'' Phys.\ Rev.\ D \textbf{65}, 123507 (2002), arXiv:astro-ph/0107573.
+
+\bibitem{Cassini2003} B.~Bertotti, L.~Iess, and P.~Tortora, ``A test of general relativity using radio links with the Cassini spacecraft,'' Nature \textbf{425}, 374 (2003).
+
+\bibitem{BDW2015} C.~P.~Burgess, R.~Diener, and M.~Williams, ``The gravity of dark vortices: effective field theory for branes and strings carrying localized flux,'' JHEP \textbf{11}, 049 (2015), doi:10.1007/JHEP11(2015)049.
+
+\bibitem{Riess2024} A.~G.~Riess \emph{et al.}, ``JWST validates HST distance measurements: Selection of supernova subsample explains differences in JWST estimates of local $H_0$,'' Astrophys.\ J.\ \textbf{977}, 120 (2024), arXiv:2408.00065.
+
+\bibitem{DesmondSakstein2020} H.~Desmond and J.~Sakstein, ``Screened fifth forces lower the TRGB-calibrated Hubble constant too,'' Phys.\ Rev.\ D \textbf{102}, 023007 (2020), arXiv:2003.12876.
+
+\bibitem{DesmondFerreira2020} H.~Desmond and P.~G.~Ferreira, ``Galaxy morphology rules out astrophysically relevant Hu--Sawicki $f(R)$ gravity,'' Phys.\ Rev.\ D \textbf{102}, 104060 (2020), arXiv:2009.08743.
+
+\bibitem{Desmond2018} H.~Desmond, P.~G.~Ferreira, G.~Lavaux, and J.~Jasche, ``Fifth force constraints from galaxy warps,'' Phys.\ Rev.\ D \textbf{98}, 083010 (2018), arXiv:1807.11742.
+
+\bibitem{BBQ2023} P.~Brax, C.~P.~Burgess, and F.~Quevedo, ``Axio-chameleons: A novel string-friendly multi-field screening mechanism,'' arXiv:2310.02092 (2023).
+
+\bibitem{Smith2025} A.~Smith, P.~Brax, C.~van de Bruck, C.~P.~Burgess, and A.-C.~Davis, ``Screened axio-dilaton cosmology: Novel forms of early dark energy,'' arXiv:2505.05450 (2025).
+
+\bibitem{ChungFreese2000} D.~J.~H.~Chung and K.~Freese, ``Can geodesics in extra dimensions solve the cosmological horizon problem?'' Phys.\ Rev.\ D \textbf{62}, 063513 (2000), arXiv:hep-ph/9910235.
+
+\bibitem{Visinelli2018} L.~Visinelli, N.~Bolis, and S.~Vagnozzi, ``Brane-world extra dimensions in light of GW170817,'' Phys.\ Rev.\ D \textbf{97}, 064039 (2018), arXiv:1711.06628.
+
+\bibitem{LinYuLiu2023} Z.-C.~Lin, H.~Yu, and Y.-X.~Liu, ``Shortcut in codimension-2 brane cosmology in light of GW170817,'' Eur.\ Phys.\ J.\ C \textbf{83}, 190 (2023), arXiv:2202.04866.
+
+\bibitem{LinYuGong2024} Z.-C.~Lin, H.~Yu, and Y.~Gong, ``Limiting the number of extra dimensions with shortcuts,'' arXiv:2312.17549 (2023).
+
+\bibitem{Sundrum1999} R.~Sundrum, ``Effective field theory for a three-brane universe,'' Phys.\ Rev.\ D \textbf{59}, 085009 (1999), arXiv:hep-ph/9805471.
+
+\bibitem{DobadoMaroto2001} A.~Dobado and A.~L.~Maroto, ``The dynamics of the Goldstone bosons on the brane,'' Nucl.\ Phys.\ B \textbf{592}, 203 (2001), arXiv:hep-ph/0007100.
+
+\bibitem{GW170817} B.~P.~Abbott \emph{et al.} (LIGO Scientific, Virgo, Fermi-GBM, INTEGRAL), ``Gravitational waves and gamma-rays from a binary neutron star merger: GW170817 and GRB 170817A,'' Astrophys.\ J.\ Lett.\ \textbf{848}, L13 (2017), arXiv:1710.05834.
+
+\bibitem{DubovskyRubakov2003} S.~L.~Dubovsky and V.~A.~Rubakov, ``On models of gravitation with infinite-volume extra dimensions,'' Phys.\ Rev.\ D \textbf{67}, 104014 (2003), arXiv:hep-th/0212222.
+
+\bibitem{Neronov2001} A.~Neronov, ``Localization of Kaluza--Klein gauge fields on a brane,'' Phys.\ Rev.\ D \textbf{65}, 044004 (2002), arXiv:hep-th/0102210.
+
+\bibitem{PRS2007} S.~L.~Parameswaran, S.~Randjbar-Daemi, and A.~Salvio, ``Gauge fields, fermions and mass gaps in 6D brane worlds,'' Nucl.\ Phys.\ B \textbf{767}, 54 (2007), arXiv:hep-th/0608074.
+
+\end{thebibliography}
+
+\end{document}
