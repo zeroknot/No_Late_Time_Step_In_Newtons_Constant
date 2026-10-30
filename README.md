@@ -63,12 +63,11 @@ pdflatex Snodgrass_No_G_Step_from_Extra_Dimensions.tex
                   and the Screening Requirements of the Scale-Invariant Loophole},
   year         = {2026},
   howpublished = {Preprint},
-  doi          = {10.5281/zenodo.XXXXXXX},
+  doi          = {10.5281/zenodo.23812286},
   note         = {Not yet peer reviewed}
 }
 ```
 
-*(Replace the DOI with the one Zenodo assigns.)*
 
 ## Disclosure
 
